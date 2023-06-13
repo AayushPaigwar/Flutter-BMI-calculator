@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -23,34 +24,68 @@ class _InputPageState extends State<InputPage> {
               children: [
                 //TOP LEFT
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.mars,
+                          size: 80,
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          "Male",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 //TOP RIGHT
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(
+                    cardChild: Column(),
+                  ),
                 )
               ],
             ),
           ),
           //CENTER
           Expanded(
-            child: ReusableCard(),
+            child: ReusableCard(
+              cardChild: Column(),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 //BOTTOM LEFT
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(
+                    cardChild: Column(),
+                  ),
                 ),
 
                 //BOTTOM RIGHT
                 Expanded(
-                  child: ReusableCard(),
+                  child: ReusableCard(
+                    cardChild: Column(),
+                  ),
                 )
               ],
             ),
           ),
+          Container(
+            color: Color(0xFFFF0067),
+            margin: EdgeInsets.only(top: 8),
+            width: double.infinity,
+            height: 80,
+          )
         ],
       ),
     );
@@ -58,11 +93,13 @@ class _InputPageState extends State<InputPage> {
 }
 
 class ReusableCard extends StatelessWidget {
-  const ReusableCard({super.key});
+  const ReusableCard({super.key, required this.cardChild});
+  final Widget cardChild;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
           color: Color(0xff1d1e33), borderRadius: BorderRadius.circular(20)),
