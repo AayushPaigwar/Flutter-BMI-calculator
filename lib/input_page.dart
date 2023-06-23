@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'reusable_card.dart';
+import 'icon_content.dart';
+
+const inactiveCardColor = Color(0xff1d1e33);
+const activeCardColor = Color.fromARGB(255, 255, 170, 0);
+
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -9,6 +16,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  //String selectedGender = Gender as String;
+  Gender? selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,32 +35,30 @@ class _InputPageState extends State<InputPage> {
                 //TOP LEFT
                 Expanded(
                   child: ReusableCard(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.mars,
-                          size: 80,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          "Male",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.blueGrey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.male;
+                        });
+                      },
+                      color: selectedGender == Gender.male
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: IconContent(
+                          icon: FontAwesomeIcons.mars, label: "MALE")),
                 ),
                 //TOP RIGHT
                 Expanded(
                   child: ReusableCard(
-                    cardChild: Column(),
-                  ),
+                      onPress: () {
+                        setState(() {
+                          selectedGender = Gender.female;
+                        });
+                      },
+                      color: selectedGender == Gender.female
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: IconContent(
+                          icon: FontAwesomeIcons.venus, label: "FEMALE")),
                 )
               ],
             ),
@@ -58,7 +66,11 @@ class _InputPageState extends State<InputPage> {
           //CENTER
           Expanded(
             child: ReusableCard(
-              cardChild: Column(),
+              onPress: () {},
+              color: activeCardColor,
+              cardChild: Column(
+                children: [],
+              ),
             ),
           ),
           Expanded(
@@ -66,14 +78,21 @@ class _InputPageState extends State<InputPage> {
               children: [
                 //BOTTOM LEFT
                 Expanded(
-                  child: ReusableCard(
-                    cardChild: Column(),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: ReusableCard(
+                      onPress: () {},
+                      color: activeCardColor,
+                      cardChild: Column(),
+                    ),
                   ),
                 ),
 
                 //BOTTOM RIGHT
                 Expanded(
                   child: ReusableCard(
+                    onPress: () {},
+                    color: activeCardColor,
                     cardChild: Column(),
                   ),
                 )
@@ -88,21 +107,6 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  const ReusableCard({super.key, required this.cardChild});
-  final Widget cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-          color: Color(0xff1d1e33), borderRadius: BorderRadius.circular(20)),
     );
   }
 }
