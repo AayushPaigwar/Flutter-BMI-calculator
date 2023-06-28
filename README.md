@@ -1,16 +1,16 @@
-# flutter_bmi_app
+# Flutter BMI App
 
-A new Flutter project.
+In this project I have learned a lot about flutter and dart.
 
-## Getting Started
+- Refactored flutter widgets.
+- Created custom widgets.
+- Learned about Gesture dector widget which has OnTap property.
+- Learned about Dart enums (Enumerations), Ternary Operators.
+- Imported Slider Package and learn how to make custom slider.
+- Learned about Navigation and routing of pages.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
