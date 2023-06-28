@@ -3,9 +3,18 @@ import 'package:flutter_bmi_app/constants.dart';
 import '../components/bottom_button.dart';
 import '../components/reusable_card.dart';
 import 'input_page.dart';
+import 'package:flutter_bmi_app/calculator_brain.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({super.key});
+  const ResultPage(
+      {super.key,
+      required this.bmiresult,
+      required this.feedback,
+      required this.resultText});
+
+  final String bmiresult;
+  final String feedback;
+  final String resultText;
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +42,24 @@ class ResultPage extends StatelessWidget {
                   children: [
                     Center(
                       child: Text(
-                        "NORMAL",
+                        feedback,
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Center(
                       child: Text(
-                        "30.2",
+                        bmiresult,
                         style: TextStyle(
                             fontSize: 100, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Center(
                       child: Text(
-                        "Your BMI is Low",
+                        feedback.toUpperCase(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 22,
-                        ),
+                            fontSize: 22, fontWeight: FontWeight.bold),
                       ),
                     )
                   ],
