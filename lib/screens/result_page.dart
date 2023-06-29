@@ -3,6 +3,7 @@ import 'package:flutter_bmi_app/constants.dart';
 import '../components/bottom_button.dart';
 import '../components/reusable_card.dart';
 import 'input_page.dart';
+// ignore: unused_import
 import 'package:flutter_bmi_app/calculator_brain.dart';
 
 class ResultPage extends StatelessWidget {
